@@ -16,7 +16,7 @@ Debemos elegir dos configuraciones:
 
 ### **Explicación de la estructura y ficheros que ha generado Angular CLI:**
 
-- **tsconfig.app.json**: Archivo principal para la configuración de TypeScript.
+**tsconfig.app.json**: Archivo principal para la configuración de TypeScript.
 - **tsconfig.json**: Extensión con más configuraciones de TypeScript.
 - **tsconfig.spec.json**: Configuración de TypeScript pero para el ambiente de pruebas.
 - **angular.json**: Archivo principal con toda la configuración del proyecto Angular.
@@ -40,13 +40,38 @@ Debemos elegir dos configuraciones:
     - **app.component.css**: Este es el archivo de estilos CSS para el componente principal (AppComponent). Contiene los estilos específicos para la apariencia del componente.
     - **app.module.ts**: Este es el archivo de módulo principal (AppModule) de la aplicación. En este archivo, defines los componentes, servicios, directivas y otros elementos que pertenecen al módulo principal de la aplicación. También especificas los módulos importados de terceros o de la propia aplicación.
     - **app-routing.module.ts**: Este archivo define el enrutamiento de la aplicación. Contiene las configuraciones de las rutas que se utilizarán para navegar entre los diferentes componentes de la aplicación.
-    - **app-routing.module.spec.ts**: Este archivo contiene las pruebas unitarias (specs) para app-routing.module.ts, si se generan pruebas con Angular CLI.
-    **app.component.spec.ts**: Este archivo contiene las pruebas unitarias para el componente principal (AppComponent). Si optaste por crear pruebas unitarias al configurar tu proyecto, estos archivos estarán presentes para los distintos componentes.
+    - **app-routing.module.spec.ts**: Este archivo contiene las pruebas unitarias (specs) para app-routing.module.ts, si se generan pruebas con Angular CLI.  
+    - **app.component.spec.ts**: 
+      Este archivo contiene las pruebas unitarias para el componente principal (AppComponent). Si optaste por crear pruebas unitarias al configurar tu proyecto, estos archivos estarán presentes para los distintos componentes.
 
 ## 2.Explica cada uno de los siguientes decoradores generados por Angular CLI, detallando cada una de las propiedades que se definen en:
 
-- app.module.ts - @NgModule (declarations, imports, providers, bootstrap).
+### **app.module.ts - @NgModule (declarations, imports, providers, bootstrap).**
 
-- app.component.ts - @Component (selector, templateUrl, styleUrls).
+Es un decorador y el elemento diferenciador de Angular respecto a otros frameworks. Al menos hasta Angular 17 es la forma de organizar y agrupar partes de la aplicación. Un módulo, por ejemplo  puede contener componentes, servicios, directivas, entre otros elementos de Angular. Las propiedades habituales son:
 
-## 3.¿Es posible poder inyectar el template y los estilos en línea de un componente sin necesidad de especificarlos en templateUrl, styleUrls? ¿Es recomendable hacer esto?ˆ
+- **declarations**
+  - Definen todos los componentes, directivas y pipes que pertenecen al módulo. De esta forma, Angular sabe qué elementos debe tener en cuenta para este módulo específico.
+- **imports**
+  - Los imports hacen que las declaraciones exportadas de otros módulos estén disponibles y funcionen de forma correcta en el módulo.
+- **providers**
+  - Los proveedores se utilizan para dar a definir servicios y valores a la inyección de dependencias. Serán utilizados por los componentes, directivas o pipes que pertenezcan al módulo o a módulos que lo importen.
+- **bootstrap**
+  - Esta propiedad especifica qué componente o componentes serán inicializados al arrancar la aplicación. Normalmente, es el componente raíz de la aplicación el que se declara aquí.
+
+### **app.component.ts - @Component(selector, templateUrl, styleUrls).**
+
+Es un decoradory se utiliza para definir un componente de Angular. Para su configuración se establece un objeto que tres pripiedades:
+
+- **selector**:
+  - Con esta propiedad se especifica el nombre del selector CSS que se utilizará para instanciar este componente en la plantilla de otro componente o en la plantilla raíz del index.html.
+- **templateUrl**:
+  - Indica la ruta al archivo HTML que contiene la plantilla para el componente. Esta es la estructura visual y de contenido que se va a renderizar cuando el componente esté presente en la aplicación.
+- **styleUrls**:
+  - Especifica una o más rutas a archivos de hoja de estilo (CSS) que definen los estilos específicos para el componente. Los estilos definidos en estos archivos se aplicarán solo a este componente y a sus hijos, asegurando un estilo encapsulado.
+
+## 3.¿Es posible poder inyectar el template y los estilos en línea de un componente sin necesidad de especificarlos en templateUrl, styleUrls? ¿Es recomendable hacer esto?  
+
+Es posible inyectar estilos directamente en el decorador @Component mediante las propiades *template* y *styles*. Aunque pienso que hacerlo de esta forma puede generar falta de mantenibilidad en el código y escasa organzación en los archivos.
+
+En un proyecto pequeño se podría no utilizar *templateUrl* y *styleUrls*. Aunque creo que la modularidad que aporta Angular debe ser aprovechada en todo momento para facilitar su organización, mantenibilidad y productividad de nuestro trabajo.
