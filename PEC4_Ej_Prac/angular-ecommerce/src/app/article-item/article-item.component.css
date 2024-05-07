@@ -1,0 +1,49 @@
+.article-container{
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+.article-image {
+  width: 400px;
+  height: auto;
+  margin: auto;
+  padding: 20px;
+}
+.article-onSale {
+  background-color: #f1f8d4;
+}
+
+div div:nth-child(1) {
+  display: flex;
+
+  justify-content: center;
+  flex-direction: column;
+
+}
+div div:nth-child(2) {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-direction: row;
+}
+
+div p {
+  text-align: center;
+}
+
+div p:nth-child(2) {
+  margin-top: 0;
+  font-size: 2rem;
+}
+button {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  font-size: 1rem;
+
+}

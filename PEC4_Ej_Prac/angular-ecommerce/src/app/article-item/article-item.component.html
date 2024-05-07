@@ -1,0 +1,15 @@
+<ng-container>
+  <div class="article-container" [ngClass]= "{ 'article-onSale': article.isOnSale}" >
+    <div>
+      <img [src]="article.imageUrl" alt="Imagen del artículo" class="article-image">
+      <h2>{{ article.name }}</h2>
+      <p>Precio: {{ article.price }}€</p>
+      <p>Unidades: {{ article.quantityInCart }}</p>
+    </div>
+    <div>
+      <button (click)="removeArticleUnit()" [disabled]="article.quantityInCart === 0">-</button>
+      <button (click)="addArticleUnit()">+</button>
+    </div>
+  </div>
+</ng-container>
+
