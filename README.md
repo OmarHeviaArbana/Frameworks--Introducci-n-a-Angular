@@ -20,6 +20,8 @@ Omar Hevia Arbana
 
 ## Comentarios
 
+- Angular CLI requiere una versión minima Node.js v18.13.
+
 - Debido a la nueva versión de Angular 17 y que ya no se basa en la utilización de modulos, caractarística fundamental de las versiones anteriores de Angular, para la creación de nuestro proyecto debemos incluir el --standalone false. Y en la opción de configuración Server-Side Rendering (SSR) debemos evitarla para trabajar de la forma tradicional. Cosa que creo que para iniciar el camino en Angular es lo correcto.
 
 ```text
