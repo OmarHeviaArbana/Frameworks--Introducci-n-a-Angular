@@ -3,10 +3,10 @@
     <div>
       <img [src]="article.imageUrl" alt="Imagen del artículo" class="article-image">
       <h2>{{ article.name }}</h2>
-      <p>Precio: {{ article.price }}€</p>
-      <p>Unidades: {{ article.quantityInCart }}</p>
+      <p [ngClass]= "{ 'price-onSale': !article.isOnSale}">Precio: {{ article.price }}€</p>
+      <p *ngIf="article.isOnSale">Unidades: {{ article.quantityInCart }}</p>
     </div>
-    <div>
+    <div *ngIf="article.isOnSale">
       <button (click)="removeArticleUnit()" [disabled]="article.quantityInCart === 0">-</button>
       <button (click)="addArticleUnit()">+</button>
     </div>
