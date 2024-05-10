@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input , Output, EventEmitter } from '@angular/core';
 import { Article } from './article.model';
-
+import { ArticleQuantityChange } from './article.model';
 
 @Component({
   selector: 'app-article-item',
@@ -9,22 +9,29 @@ import { Article } from './article.model';
 })
 
 export class ArticleItemComponent {
-  article: Article = {
-    name: 'MacBook Pro de 14 pulgadas - Gris espacial',
-    imageUrl: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-14-spacegray-cto-hero-202310?wid=772&hei=466&fmt=jpeg&qlt=90&.v=1697913381764',
-    price: 2.029,
-    isOnSale: true,
-    quantityInCart: 0
-  };
+
+  @Input() article = {} as  Article
+  @Output() articleQuantityChange = new EventEmitter<ArticleQuantityChange>();
+
+
+  articleQuantity: number = 0;
 
   addArticleUnit(): void {
-    this.article.quantityInCart += 1;
+    /* this.article.quantityInCart += 1; */
   }
 
   removeArticleUnit(): void {
-    if (this.article.quantityInCart > 0) {
+    /* if (this.article.quantityInCart > 0) {
       this.article.quantityInCart -= 1;
-    }
+    } */
   }
+
+
+  quantityChange(): void {
+      this.articleQuantityChange.emit({
+          article: this.article,
+          quantity: this.articleQuantity
+      });
+}
 
 }

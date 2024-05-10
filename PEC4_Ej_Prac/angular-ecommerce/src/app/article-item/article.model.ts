@@ -5,3 +5,8 @@ export interface Article {
   isOnSale: boolean;
   quantityInCart: number;
 }
+
+export interface ArticleQuantityChange {
+  article: Article;
+  quantity: number;
+}

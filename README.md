@@ -37,3 +37,50 @@ ng g c article-item
 ```
 
 - El módulo **CommonModule** de Angular proporciona muchas directivas comunes, incluido ngClass. Debes asegurarte de importar CommonModule en el módulo donde está declarado tu componente.
+
+- Para usar templates y estilos en línea en el componente utilizando Angular CLI se debe utilizar el siguiente comando
+
+*Versiones de Angular < 17*
+
+```text
+ng generate component article-list --inlineTemplate --inlineStyle
+```
+
+*Angular 17*
+
+```text
+ng generate component article-list --inline-template --inline-style
+
+```
+
+- Para utilizar la directiva ngModel en un componente, es necesario importar FormsModule app.module:
+  
+```text  
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ArticleItemComponent } from './article-item/article-item.component';
+import { ArticleListComponent } from './article-list/article-list.component';
+@NgModule({
+  declarations: [
+    AppComponent,
+    ArticleItemComponent,
+    ArticleListComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CommonModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```

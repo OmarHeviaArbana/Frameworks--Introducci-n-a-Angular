@@ -1,4 +1,4 @@
-<ng-container>
+
   <div class="article-container" [ngClass]= "{ 'article-onSale': article.isOnSale}" >
     <div>
       <img [src]="article.imageUrl" alt="Imagen del artículo" class="article-image">
@@ -6,10 +6,11 @@
       <p [ngClass]= "{ 'price-onSale': !article.isOnSale}">Precio: {{ article.price }}€</p>
       <p *ngIf="article.isOnSale">Unidades: {{ article.quantityInCart }}</p>
     </div>
+    <input type="number" [(ngModel)]="articleQuantity" min="0" (change)="quantityChange()" />
     <div *ngIf="article.isOnSale">
-      <button (click)="removeArticleUnit()" [disabled]="article.quantityInCart === 0">-</button>
+
+     <button (click)="removeArticleUnit()" [disabled]="article.quantityInCart === 0">-</button>
       <button (click)="addArticleUnit()">+</button>
     </div>
   </div>
-</ng-container>
 
