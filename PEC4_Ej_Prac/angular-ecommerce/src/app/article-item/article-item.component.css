@@ -66,3 +66,9 @@ button {
 .price-onSale {
   color: rgb(128, 128, 128, 0.4);
 }
+
+.rowBtns {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

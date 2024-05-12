@@ -6,11 +6,12 @@
       <p [ngClass]= "{ 'price-onSale': !article.isOnSale}">Precio: {{ article.price }}€</p>
       <p *ngIf="article.isOnSale">Unidades: {{ article.quantityInCart }}</p>
     </div>
-    <input type="number" [(ngModel)]="articleQuantity" min="0" (change)="quantityChange()" />
-    <div *ngIf="article.isOnSale">
+    <input *ngIf="article.isOnSale" type="number" [(ngModel)]="article.quantityInCart" min="0" (change)="quantityChange(article.quantityInCart)" />
+    <div *ngIf="article.isOnSale" class="rowBtns">
+      <button (click)="removeArticleUnit(article.quantityInCart)" [disabled]="article.quantityInCart === 0">-</button>
+      <button (click)="addArticleUnit(article.quantityInCart)">+</button>
 
-     <button (click)="removeArticleUnit()" [disabled]="article.quantityInCart === 0">-</button>
-      <button (click)="addArticleUnit()">+</button>
+
     </div>
   </div>
 

@@ -12,26 +12,35 @@ export class ArticleItemComponent {
 
   @Input() article = {} as  Article
   @Output() articleQuantityChange = new EventEmitter<ArticleQuantityChange>();
-
+  @Output() addArticle = new EventEmitter<ArticleQuantityChange>();
+  @Output() removeArticle = new EventEmitter<ArticleQuantityChange>();
 
   articleQuantity: number = 0;
-
-  addArticleUnit(): void {
-    /* this.article.quantityInCart += 1; */
-  }
-
-  removeArticleUnit(): void {
-    /* if (this.article.quantityInCart > 0) {
-      this.article.quantityInCart -= 1;
-    } */
-  }
-
-
-  quantityChange(): void {
-      this.articleQuantityChange.emit({
+      quantityChange(quantity: number): void {
+        const quantityChange: ArticleQuantityChange = {
           article: this.article,
-          quantity: this.articleQuantity
-      });
-}
+          quantity
+        };
+        this.articleQuantityChange.emit(quantityChange);
+
+      }
+      removeArticleUnit(quantity: number): void {
+        const quantityChange: ArticleQuantityChange = {
+          article: this.article,
+          quantity
+        };
+
+        this.removeArticle.emit(quantityChange);
+      }
+      addArticleUnit(quantity: number): void {
+        const quantityChange: ArticleQuantityChange = {
+          article: this.article,
+          quantity
+        };
+
+        this.addArticle.emit(quantityChange);
+      }
+
+
 
 }
